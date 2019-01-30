@@ -1,12 +1,28 @@
-import React from 'react';
-import {Col, Row, Container} from 'reactstrap';
+import React, {Component} from 'react';
+import {Col, Row, Container, Button} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
 
 
-const App = () => {
+export default class App extends Component{
+    constructor() {
+        super();
+        this.state = { visible: true };
+        this.toggle = this.toggle.bind(this);
+    }
+    
+    toggle() {
+        this.setState({
+          visible: !this.state.visible
+        });
+      }
+     
+
+   render() {
+    const {visible} = this.state;
+    const charVisible = visible ? <RandomChar/>: null;
     return (
         <> 
             <Container>
@@ -15,7 +31,10 @@ const App = () => {
             <Container>
                 <Row>
                     <Col lg={{size: 5, offset: 0}}>
-                        <RandomChar/>
+                        <Button className ="mb-2" onClick={() => this.toggle()} > Нажми меня нежно</Button>
+                        {charVisible}
+                        
+                        
                     </Col>
                 </Row>
                 <Row>
@@ -28,7 +47,9 @@ const App = () => {
                 </Row>
             </Container>
         </>
-    );
+    )
+    
+   }
+  
 };
 
-export default App;
