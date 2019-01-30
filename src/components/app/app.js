@@ -7,22 +7,20 @@ import CharDetails from '../charDetails';
 
 
 export default class App extends Component{
-    constructor() {
-        super();
-        this.state = { visible: true };
-        this.toggle = this.toggle.bind(this);
+   state = {
+        visible: true
     }
-    
-    toggle() {
-        this.setState({
-          visible: !this.state.visible
+    toggle = () => {
+        this.setState((state) =>{
+            return {
+                visible: !state.visible
+            }
         });
       }
      
 
    render() {
-    const {visible} = this.state;
-    const charVisible = visible ? <RandomChar/>: null;
+    const charVisible = this.state.visible ? <RandomChar/>: null;
     return (
         <> 
             <Container>
