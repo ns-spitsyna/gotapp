@@ -5,7 +5,7 @@ export default class GotService{
     }
     
     
-    async getResource(url){
+     getResource = async (url) =>{
         const res = await fetch(`${this._apiBase}${url}`);
        
        
@@ -16,28 +16,32 @@ export default class GotService{
         return await res.json();
     };
 
-    async getAllCharacters(){
+     getAllCharacters = async () =>{
         const res = await this.getResource('/characters?page=5&pageSize=10');
         return res.map(this._transformCharacter);
     }
     
-    async getCharacter(id){
+     getCharacter = async (id) =>{
         
         const character = await this.getResource(`/characters/${id}`);
         return this._transformCharacter(character);
     }
-    getAllHouses(){
-        return this.getResource('/houses');
+    getAllHouses = async () =>{
+        
+        const res = await this.getResource('/houses');
+        return res.map(this._transformHouse);
     }
-    getHouse(id){
+    getHouse = async (id) =>{
         
         return this.getResource(`/houses/${id}`);
     }
 
-    getAllBooks(){
-        return this.getResource('/books');
+    getAllBooks = async () =>{
+        const res = await this.getResource('/books');
+        return res.map(this._transformBook);
+        
     }
-    getBooks(id){
+    getBooks = async (id) =>{
         return this.getResource(`/books/${id}`);
     }
 
@@ -46,24 +50,16 @@ export default class GotService{
         return {name, gender, born, died,culture,id}
         
     }
-    _transformHouse(house) {
-        return {
-            name: house.name,
-            region: house.region,
-            words: house.words,
-            titles: house.titles,
-            overlord: house.overlord,
-            ancestralWeapons:house.ancestralWeapons
-        }
+    _transformHouse({name, region, words, titles,overlord, ancestralWeapons,url}) {
+        const [id] = url.match(/\d+$/g);
+        
+        return {name, region, words, titles,overlord, ancestralWeapons,id}
         
     }
-    _transformBook(book) {
-        return {
-            name: book.name,
-            numberOfPages: book.numberOfPages,
-            publiser: book.publiser,
-            released: book.released
-        }
+    _transformBook({name, numberOfPages, publiser, released, url}) {
+        const [id] = url.match(/\d+$/g);
+        
+        return {name, numberOfPages, publiser, released, id}
         
     }
 

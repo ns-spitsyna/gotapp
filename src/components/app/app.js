@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {Col, Row, Container, Button} from 'reactstrap';
+import {HousesPage, CharacterPage, BooksPage} from '../pages';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import CharacterPage from '../characterPage';
 import ErrorMessage from '../errorMessage';
-
+import gotService from '../../services/gotService';
 export default class App extends Component{
+    gotService = new gotService();
    
     state = {
         visible: true,
@@ -50,6 +51,9 @@ export default class App extends Component{
                     </Col>
                 </Row>
                 <CharacterPage/>
+                <BooksPage/>
+                <HousesPage/>
+                
             </Container>
         </>
     )

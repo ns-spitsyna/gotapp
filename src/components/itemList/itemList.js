@@ -1,23 +1,29 @@
 import React, {Component} from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
-import gotService from '../../services/gotService';
+
 import Spinner from '../spinner';
 import './itemList.css';
 import ErrorMessage from '../errorMessage';
+
+
+
 export default class ItemList extends Component {
-    gotService = new gotService();
+   
 
     state = {
-        charList: null,
+        itemList: null,
         error: false
     };
 
   
     componentDidMount(){
-        this.gotService.getAllCharacters()
-            .then((charList) =>{
+        const {getData} = this.props;
+        console.log(getData);
+        
+        getData()
+            .then((itemList) =>{
                 this.setState({
-                    charList
+                    itemList
                 })
             })
     }
@@ -29,36 +35,38 @@ export default class ItemList extends Component {
     }
  
     renderItems(arr){
-        
-       
-        
-       
+                    
         return arr.map((item) => {
+            
+            const {id} = item;
+            console.log(id);
+            const label = this.props.renderItem(item);
             
             return (
                 <ListGroupItem  
-                    key ={item.id}
+                    key ={id}
                     className="list-group-item"
-                    onClick = {()=>this.props.onCharSelected(item.id)}                   
+                    onClick = {()=>this.props.onItemSelected(id)}  
+                                   
                     >
-                    {item.name}
+                    {label}
                 </ListGroupItem >
             )
         })
     }
     render() {
 
-        const {charList} = this.state;
+        const {itemList} = this.state;
         
-        if(!charList){
+        if(!itemList){
             return <Spinner/>
         }
         if (this.state.error){
             return <ErrorMessage/>
         }
-        const items = this.renderItems(charList);
+        const items = this.renderItems(itemList);
         return (
-            <ListGroup className="item-list list-group">
+            <ListGroup className="item-list list-group  mb-2">
                 {items}
             </ListGroup>
         );
