@@ -11,12 +11,12 @@ export default class CharacterPage extends Component{
     gotService = new gotService();
 
     state = {
-        selectedChar: 130, 
+        selectedItem: 130, 
         error: false
     }
     onItemSelected = (id) => {
         this.setState({
-            selectedChar: id
+            selectedItem: id
         })
     }
     componentDidCatch(){
@@ -40,7 +40,7 @@ export default class CharacterPage extends Component{
 
         const itemDetails = (
             <ItemDetails 
-            itemId = {this.state.selectedChar}
+            itemId = {this.state.selectedItem}
             getDetails = {this.gotService.getCharacter} 
            >
             <Field field = 'gender' label = 'Gender'/>

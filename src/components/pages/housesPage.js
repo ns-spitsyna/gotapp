@@ -12,14 +12,14 @@ export default class HousesPage extends Component{
     gotService = new gotService();
 
     state = {
-        selectedChar: 2, 
+        selectedItem: 2, 
         error: false
     }
 
 
     onItemSelected = (id) => {
         this.setState({
-            selectedChar: id
+            selectedItem: id
         })
     }
     componentDidCatch(){
@@ -43,7 +43,7 @@ export default class HousesPage extends Component{
 
         const itemDetails = (
             <ItemDetails 
-            itemId = {this.state.selectedChar}
+            itemId = {this.state.selectedItem}
             getDetails={this.gotService.getHouse}
            >
             <Field field = 'region' label = 'Region'/>

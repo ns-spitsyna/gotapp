@@ -18,7 +18,7 @@ export default class ItemList extends Component {
   
     componentDidMount(){
         const {getData} = this.props;
-        console.log(getData);
+        
         
         getData()
             .then((itemList) =>{
@@ -39,7 +39,7 @@ export default class ItemList extends Component {
         return arr.map((item) => {
             
             const {id} = item;
-            console.log(id);
+          
             const label = this.props.renderItem(item);
             
             return (

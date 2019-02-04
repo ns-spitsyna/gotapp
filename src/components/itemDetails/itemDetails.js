@@ -9,6 +9,7 @@ const Itemdetails = styled.div`
     background-color: #fff;
     padding: 25px 25px 15px 25px;
     margin-bottom: 40px;
+    
     h4 { 
         margin-bottom: 20px;
         text-align: center;
@@ -71,6 +72,8 @@ export default class ItemDetails extends Component {
             return <span className="select-error">Please select a character</span>
             
         }
+        const color = this.props.books?{backgroundColor:'#c2c3f7'}:{backgroundColor:'#fff'};
+       
         // if(!this.state.char){
         //     return <Spinner/>
         // }
@@ -81,7 +84,7 @@ export default class ItemDetails extends Component {
         const {itemDetails} = this.state;
         const {name} = itemDetails;
         return (
-            <Itemdetails className="char-details rounded">
+            <Itemdetails className="char-details rounded" style={color}>
                 <h4>{name}</h4>
                 <ListGroup className="list-group list-group-flush">
                  {

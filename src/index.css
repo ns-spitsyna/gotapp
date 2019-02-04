@@ -18,3 +18,9 @@ a:active {
     text-decoration: none;
     color: inherit;
 }
+.title{
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 100px;
+}

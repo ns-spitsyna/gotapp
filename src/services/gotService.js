@@ -53,7 +53,7 @@ export default class GotService{
     _transformHouse({name, region, words, titles,overlord, ancestralWeapons,url}) {
         const [id] = url.match(/\d+$/g);
         
-        return {name, region, words, titles,overlord, ancestralWeapons,id}
+        return {name, region, words, titles:titles.join(';'),overlord, ancestralWeapons,id}
         
     }
     _transformBook({name, numberOfPages, publiser, released, url}) {
