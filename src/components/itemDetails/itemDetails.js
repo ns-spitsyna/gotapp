@@ -72,7 +72,8 @@ export default class ItemDetails extends Component {
             return <span className="select-error">Please select a character</span>
             
         }
-        const color = this.props.books?{backgroundColor:'#c2c3f7'}:{backgroundColor:'#fff'};
+        let color = {};
+        if(this.props.books){   color = {backgroundColor:'#c2c3f7'}; }
        
         // if(!this.state.char){
         //     return <Spinner/>
