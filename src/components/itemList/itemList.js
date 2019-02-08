@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+//import { ListGroup, ListGroupItem } from 'reactstrap';
 
 import Spinner from '../spinner';
 import './itemList.css';
@@ -43,14 +43,14 @@ export default class ItemList extends Component {
             const label = this.props.renderItem(item);
             
             return (
-                <ListGroupItem  
+                <li 
                     key ={id}
                     className="list-group-item"
                     onClick = {()=>this.props.onItemSelected(id)}  
                                    
                     >
                     {label}
-                </ListGroupItem >
+                </li >
             )
         })
     }
@@ -66,9 +66,9 @@ export default class ItemList extends Component {
         }
         const items = this.renderItems(itemList);
         return (
-            <ListGroup className="item-list list-group  mb-2">
+            <ul className="item-list list-group  mb-2">
                 {items}
-            </ListGroup>
+            </ul>
         );
     }
 }

@@ -12,7 +12,7 @@ export default class HousesPage extends Component{
     gotService = new gotService();
 
     state = {
-        selectedItem: 2, 
+        selectedItem: null, 
         error: false
     }
 
@@ -34,6 +34,7 @@ export default class HousesPage extends Component{
         
         const itemList = (
             <ItemList 
+            
             onItemSelected = {this.onItemSelected}
             getData = {this.gotService.getAllHouses}
             renderItem = {(item) =>item.name}

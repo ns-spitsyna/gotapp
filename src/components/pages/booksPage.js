@@ -13,8 +13,7 @@ class BooksPage extends Component{
     gotService = new gotService();
 
     state = {
-      
-        error: false
+         error: false
     }
 
 

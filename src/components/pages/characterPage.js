@@ -11,7 +11,7 @@ export default class CharacterPage extends Component{
     gotService = new gotService();
 
     state = {
-        selectedItem: 130, 
+        selectedItem: null, 
         error: false
     }
     onItemSelected = (id) => {
@@ -20,7 +20,7 @@ export default class CharacterPage extends Component{
         })
     }
     componentDidCatch(){
-        console.log('error');
+        
         this.setState({
             error: true
         })

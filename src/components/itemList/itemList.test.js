@@ -7,8 +7,10 @@ import gotService from '../../services/gotService';
 describe('Testing <ItemList/>', () =>{
     const service = new gotService();
     const list = mount(<ItemList
-                            getData={service.getAllHouses}
-                            renderItem={({name}) => name}
+                            getData={service.getAllBooks}
+                            onItemSelected={({name})=> name}
+                            renderItem={({name}) => name
+                        }
     
     />)
     it('Click on item list must rerender all list in 1 instance', () =>{
